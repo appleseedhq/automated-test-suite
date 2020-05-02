@@ -42,7 +42,7 @@ ssh-keyscan SERVER_IP && ssh-keygen -F SERVER_IP
 
 For more details, see `deploy` in `.travis.yml`.
 
-## Run test scenes on the server 
+### Run test scenes on the server 
 
 First, install some dependencies:
 
@@ -66,7 +66,7 @@ $ sudo crontab -u johnny -e
 0 0 * * * sh /home/johnny/atuomated-test-suite/run_tests.sh
 ```
 
-## Show test scenes report online
+### Show test scenes report online
 
 We use a Docker container with `nginx:alpine`. First, prepare the www directory:
 
