@@ -52,7 +52,7 @@ rsync \
 cd "$CURRENT_JOB_TEST_SCENES_PATH"
 export LD_LIBRARY_PATH="$CURRENT_JOB_PATH/sandbox/lib/Ship:$CURRENT_JOB_PATH/prebuilt-linux-deps/lib"
 # We use nice to reduce the test job process priority.
-nice -n1 python $TESTSUITE_PATH -r -t $APPLESEED_PATH alpha > testsuite_script_log.txt 2>&1
+nice -n1 python $TESTSUITE_PATH -r -t $APPLESEED_PATH > testsuite_script_log.txt 2>&1
 
 # Unlock the job.
 rm "$RUNNING_LOCK_FILE_PATH"
