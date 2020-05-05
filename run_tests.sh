@@ -12,13 +12,11 @@ PREVIOUS_JOB_PATH=$SERVER_PATH/previous-job
 
 CURRENT_JOB_TEST_SCENES_PATH=$CURRENT_JOB_PATH/sandbox/tests/test\ scenes
 
-BUILD_PATH=$ROOT/build
 DEPLOY_BUILD_PATH=$ROOT/last_master_build
 
-TESTSUITE_PATH=$BUILD_PATH/scripts/runtestsuite/runtestsuite.py
-APPLESEED_PATH=$BUILD_PATH/sandbox/bin/Ship/appleseed.cli
-TEST_SCENES_PATH=$BUILD_PATH/sandbox/tests/test\ scenes
-BUILD_REPORT_PATH=$BUILD_PATH/build_report.txt
+TESTSUITE_PATH=$CURRENT_JOB_PATH/scripts/runtestsuite/runtestsuite.py
+APPLESEED_PATH=$CURRENT_JOB_PATH/sandbox/bin/Ship/appleseed.cli
+TEST_SCENES_PATH=$BUILD_PATHCURRENT_JOB_PATH/tests/test\ scenes
 SCRIPTS_REPO_PATH=$ROOT/automated-test-suite
 
 RUNNING_LOCK_FILE_PATH=$SERVER_PATH/running.txt
