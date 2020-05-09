@@ -16,7 +16,6 @@ DEPLOY_BUILD_PATH=$ROOT/last_master_build
 
 TESTSUITE_PATH=$CURRENT_JOB_PATH/scripts/runtestsuite/runtestsuite.py
 APPLESEED_PATH=$CURRENT_JOB_PATH/sandbox/bin/Ship/appleseed.cli
-TEST_SCENES_PATH=$BUILD_PATHCURRENT_JOB_PATH/tests/test\ scenes
 SCRIPTS_REPO_PATH=$ROOT/automated-test-suite
 
 RUNNING_LOCK_FILE_PATH=$SERVER_PATH/running.txt
@@ -25,6 +24,14 @@ RUNNING_LOCK_FILE_PATH=$SERVER_PATH/running.txt
 {
 if [ -f "$RUNNING_LOCK_FILE_PATH" ]; then
     echo "Job already running."
+    exit 0
+fi
+}
+
+# Stop this script if no build was deployed since the last run.
+{
+if [ ! -f "$DEPLOY_BUILD_PATH" ]; then
+    echo "No build"
     exit 0
 fi
 }
@@ -41,10 +48,7 @@ rm -rf "$PREVIOUS_JOB_PATH"
 mv "$CURRENT_JOB_PATH" "$PREVIOUS_JOB_PATH"
 
 # Copy the build in the current job.
-rsync \
-    -raz --stats \
-    "$DEPLOY_BUILD_PATH/" \
-    "$CURRENT_JOB_PATH/"
+mv "$DEPLOY_BUILD_PATH/" "$CURRENT_JOB_PATH/"
 
 # Run the tests.
 cd "$CURRENT_JOB_TEST_SCENES_PATH"
