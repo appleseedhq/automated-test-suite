@@ -30,7 +30,7 @@ fi
 
 # Stop this script if no build was deployed since the last run.
 {
-if [ ! -f "$DEPLOY_BUILD_PATH" ]; then
+if [ ! -d "$DEPLOY_BUILD_PATH" ]; then
     echo "No build"
     exit 0
 fi
@@ -46,6 +46,7 @@ cp "$SCRIPTS_REPO_PATH/webserver/index.html" "$SERVER_PATH/"
 # Last current job become previous job
 rm -rf "$PREVIOUS_JOB_PATH"
 mv "$CURRENT_JOB_PATH" "$PREVIOUS_JOB_PATH"
+rm -rf "$CURRENT_JOB_PATH"
 
 # Copy the build in the current job.
 mv "$DEPLOY_BUILD_PATH/" "$CURRENT_JOB_PATH/"
