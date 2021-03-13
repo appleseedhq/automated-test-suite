@@ -1,5 +1,6 @@
 # automated-test-suite
-Scripts and utilities that run appleseed's functional test suite on Digital Ocean
+
+Scripts and utilities that run appleseed's functional test suite on Digital Ocean.
 
 We use a dedicated server on Digital Ocean to run the appleseed test suite on each master build. Travis jobs take care of uploading the Linux build to our server.
 
