@@ -38,18 +38,21 @@ fi
 
 # Lock the job.
 touch "$RUNNING_LOCK_FILE_PATH"
-echo "running..." >> "$RUNNING_LOCK_FILE_PATH"
+echo "Running..." >> "$RUNNING_LOCK_FILE_PATH"
 
-# Make sure the server index is up to date with the repo.
+# Make sure the server index is up-to-date with the repo.
 cp "$SCRIPTS_REPO_PATH/webserver/index.html" "$SERVER_PATH/"
 
-# Last current job become previous job
+# Last current job becomes previous job.
 rm -rf "$PREVIOUS_JOB_PATH"
 mv "$CURRENT_JOB_PATH" "$PREVIOUS_JOB_PATH"
 rm -rf "$CURRENT_JOB_PATH"
 
-# Copy the build in the current job.
+# Move the build to  the current job.
 mv "$DEPLOY_BUILD_PATH/" "$CURRENT_JOB_PATH/"
+
+# Copy build_report.txt next to the test runner script.
+cp "$CURRENT_JOB_PATH/build_report.txt" "$CURRENT_JOB_TEST_SCENES_PATH"
 
 # Run the tests.
 cd "$CURRENT_JOB_TEST_SCENES_PATH"
