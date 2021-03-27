@@ -1,7 +1,6 @@
-
 set -x
 
-# Treat undefinied variables as an error
+# Treat undefined variables as an error.
 set -u
 
 ROOT=/home/johnny
@@ -33,7 +32,7 @@ fi
 # Stop this script if no build was deployed since the last run.
 {
 if [ ! -d "$DEPLOY_BUILD_PATH" ]; then
-    echo "No build"
+    echo "No build."
     exit 0
 fi
 }
@@ -50,7 +49,7 @@ rm -rf "$PREVIOUS_JOB_PATH"
 mv "$CURRENT_JOB_PATH" "$PREVIOUS_JOB_PATH"
 rm -rf "$CURRENT_JOB_PATH"
 
-# Move the build to  the current job.
+# Move the build to the current job.
 mv "$DEPLOY_BUILD_PATH/" "$CURRENT_JOB_PATH/"
 
 # Copy build_report.txt next to the test runner script.
