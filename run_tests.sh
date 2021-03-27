@@ -6,6 +6,8 @@ set -u
 
 ROOT=/home/johnny
 
+echo "Version of run_tests.sh: 1.0"
+
 SERVER_PATH=$ROOT/automated-test-suite-www
 CURRENT_JOB_PATH=$SERVER_PATH/current-job
 PREVIOUS_JOB_PATH=$SERVER_PATH/previous-job
